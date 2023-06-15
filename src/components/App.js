@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import '../styles/App.css'
-import { marked } from 'marked';
+import React,{useState,useEffect} from 'react';
+//import marked from 'marked';
+import ReactMarkdown from 'react-markdown';
 
-const App = () => {
-    const [text,setText]  = useState('');
-    const handleChange = (e) => {
-        setText(e.target.value)
-    }
-    useEffect(()=>{
-        const markdowntext = marked(text);
-        document.getElementById('view').innerHTML = markdowntext;
-    },[text])
-  return (
-    <div className='parent'>
-      <div className='writing'>
-        <textarea type='text' value={text} onChange={handleChange} />
-      </div>
-      <div className='printing'>
-      <h2 id='view'></h2>
-      </div>
-      
+function App()
+{
+    const[write,setWrite] = useState('');
+{/* const[html,setHtml] = useState('');
+useEffect(()=>{
+    const output = marked(write);
+    setHtml(output)
+}) */}
+  
+
+return(
+    <>
+    <div className='writedown'>
+        <textarea onChange={(e)=>setWrite(e.target.value)} type='text'  value={write} >
+            </textarea> 
     </div>
-  );
-}
+    <ReactMarkdown className='output' source={write} />
+   {/*<div className='output' dangerouslySetInnerHTML={{ __html: html }}></div> */} 
+    </>
+)
 
+}
 export default App;
