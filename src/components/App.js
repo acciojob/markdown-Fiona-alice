@@ -19,6 +19,7 @@ const App = () => {
       <div className='printing'>
       <h2 id='view'></h2>
       </div>
+      
     </div>
   );
 }
